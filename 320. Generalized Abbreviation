@@ -1,0 +1,30 @@
+public class Solution {
+    public List<String> generateAbbreviations(String word) {
+        List<String> list = new ArrayList<>();
+        int num = (int)Math.pow(2,word.length());
+        for(int i=0; i<num; i++){
+            StringBuffer s = new StringBuffer();
+            int index=word.length()-1;
+            int count=0;
+            int tmp=i;
+            while(index>=0){
+                if((tmp&1)==1 && count==0)
+                    s.insert(0,word.charAt(index));
+                if((tmp&1)==1 && count!=0){
+                    s.insert(0,count);
+                    s.insert(0,word.charAt(index));
+                    count=0;
+                }
+                if((tmp&1)==0)
+                    count++;
+                index--;
+                tmp>>=1;
+            }
+            if(count!=0)
+                s.insert(0,count);
+            list.add(s.toString());
+        }
+        return list;
+        
+    }
+}
