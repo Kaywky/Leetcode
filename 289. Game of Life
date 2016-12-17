@@ -1,0 +1,31 @@
+public class Solution {
+    public void gameOfLife(int[][] board) {
+        int m = board.length;
+        int n = board[0].length;
+        if(m==0 || n==0)
+            return;
+        int[][] update = new int[m][n];
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+            for(int a=Math.max(i-1,0); a<m && a<=i+1; a++){
+                for(int b=Math.max(j-1,0); b<n && b<=j+1; b++)
+                    update[i][j]+=board[a][b];
+            }
+            update[i][j]=update[i][j]-board[i][j];
+            System.out.println(update[i][j]);
+            
+            if(board[i][j]==1 && (update[i][j]==2 || update[i][j]==3))
+                update[i][j]=1;
+            else if(board[i][j]==0 && update[i][j]==3)
+                update[i][j]=1;
+            else
+                update[i][j]=0;
+            }
+        }
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++)
+                board[i][j]=update[i][j];
+        }
+        
+    }
+}
