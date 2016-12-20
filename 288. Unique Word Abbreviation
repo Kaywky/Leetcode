@@ -1,0 +1,44 @@
+public class ValidWordAbbr {
+    
+    Set<String> set;
+    Set<String> repeat;
+    Set<String> dic;
+
+    public ValidWordAbbr(String[] dictionary) {
+        set=new HashSet<>();
+        repeat=new HashSet<>();
+        dic=new HashSet<>();
+        for(String s:dictionary){
+            String tmp;
+            if(s.length()<=2)
+                tmp=s;
+            else
+                tmp=s.charAt(0)+String.valueOf(s.length()-2)+s.charAt(s.length()-1);
+            if(dic.contains(s))
+                continue;
+            else
+                dic.add(s);
+            if(set.contains(tmp))
+                repeat.add(tmp);
+            set.add(tmp);
+        }
+    }
+
+    public boolean isUnique(String word) {
+        String tmp;
+        if(word.length()<=2)
+            tmp=word;
+        else
+            tmp=word.charAt(0)+String.valueOf(word.length()-2)+word.charAt(word.length()-1);
+        if((set.contains(tmp) && !dic.contains(word)) || (set.contains(tmp) && repeat.contains(tmp)))
+            return false;
+        else
+            return true;
+    }
+}
+
+
+// Your ValidWordAbbr object will be instantiated and called as such:
+// ValidWordAbbr vwa = new ValidWordAbbr(dictionary);
+// vwa.isUnique("Word");
+// vwa.isUnique("anotherWord");
