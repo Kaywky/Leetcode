@@ -1,0 +1,17 @@
+public class Solution {
+    public int lengthLongestPath(String input) {
+        String[] split=input.split("\n");
+        int[] tmp=new int[split.length+1];
+        
+        int len=0;
+        for(int i=0; i<split.length; i++){
+            int lev = split[i].lastIndexOf("\t")+1;
+            int curlen=tmp[lev+1]=tmp[lev]+split[i].length()-lev+1;
+            if(split[i].contains("."))
+                len=Math.max(len, curlen-1);
+        }
+        return len;
+        
+        
+    }
+}
