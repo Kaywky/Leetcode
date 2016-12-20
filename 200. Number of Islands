@@ -1,0 +1,41 @@
+public class Solution {
+    int count=0;
+    boolean[][] reach;
+    
+    public int numIslands(char[][] grid) {
+        if(grid.length==0 || grid[0].length==0)
+            return 0;
+        int m=grid.length;
+        int n=grid[0].length;
+        reach=new boolean[m][n];
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(reach[i][j]==false && grid[i][j]=='1'){
+                    helper(grid, i, j);
+                    count++;
+                }
+            }
+        }
+        
+        return count;
+        
+    }
+    
+    public void helper(char[][] grid, int i, int j){
+        reach[i][j]=true;
+        if(i>=1 && grid[i-1][j]=='1' && !reach[i-1][j]){
+            helper(grid, i-1,j);
+        }
+        if(j>=1 && grid[i][j-1]=='1' && !reach[i][j-1]){
+            helper(grid, i,j-1);
+        }
+        if(i<grid.length-1 && grid[i+1][j]=='1' && !reach[i+1][j]){
+            helper(grid, i+1,j);
+        }
+        if(j<grid[0].length-1 && grid[i][j+1]=='1' && !reach[i][j+1]){
+            helper(grid, i,j+1);
+        }
+    }
+    
+    
+}
