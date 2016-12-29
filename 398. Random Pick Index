@@ -1,0 +1,41 @@
+import java.util.concurrent.ThreadLocalRandom;
+
+public class Solution {
+    int[] nums;
+
+    public Solution(int[] nums) {
+        this.nums = nums;
+    }
+    
+    public int pick(int target) {
+        int index=0;
+        int tmp=0;
+        int count=0;
+        while(index<nums.length){
+            if(nums[index]!=target){
+                index++;
+                continue;
+            }
+            count++;
+            if(count==1){
+                tmp=index;
+                index++;
+                continue;
+            }
+            if(rnum(1, count)==count)
+                tmp=index;
+            index++;
+        }
+        return tmp;
+    }
+    
+    private int rnum(int min, int max){
+        return ThreadLocalRandom.current().nextInt(min,max+1);
+    }
+}
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * int param_1 = obj.pick(target);
+ */
