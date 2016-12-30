@@ -1,0 +1,33 @@
+public class Solution {
+    public boolean validTree(int n, int[][] edges) {
+        if(n<=1)
+            return true; 
+        int[][] check = new int[n][n];
+        int[] tf = new int[n];
+        for(int[] arr : edges){
+            check[arr[0]][arr[1]]=1;
+            check[arr[1]][arr[0]]=1;
+        }
+        Queue<Integer> que = new LinkedList<>();
+        que.offer(0);
+        while(!que.isEmpty()){
+            int size = que.size();
+            for(int i=0; i<size; i++){
+                int tmp=que.poll();
+                tf[tmp]=1;
+                for(int j=0; j<n; j++){
+                    if(check[tmp][j]==1 && tf[j]==0 && !que.contains(j))
+                        que.offer(j);
+                    else if(check[tmp][j]==1 && tf[j]==0 && que.contains(j))
+                        return false;
+                }
+                
+            }
+        }
+        for(int e: tf){
+            if(e==0)
+                return false;
+        }
+        return true;
+    }
+}
