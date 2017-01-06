@@ -32,3 +32,5 @@ public class Solution {
         return res.toString();
     }
 }
+
+//a real bad, stupid method
