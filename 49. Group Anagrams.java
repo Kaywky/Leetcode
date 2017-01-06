@@ -23,3 +23,6 @@ label:  for(String s: strs){
         
     }
 }
+
+// this method passes 99/100 tests. one failed because time limit exceeded.
+    
