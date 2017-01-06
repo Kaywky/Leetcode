@@ -25,4 +25,27 @@ label:  for(String s: strs){
 }
 
 // this method passes 99/100 tests. one failed because time limit exceeded.
+
+//modified version:
+
+public class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        List<List<String>> list = new ArrayList<>();
+        Map<String, ArrayList<String>> map = new HashMap<>();
+        
+        for(String s:strs){
+            char[] tmp = s.toCharArray();
+            Arrays.sort(tmp);
+            String tmps=String.valueOf(tmp); // attention: not "tmp.toString()"
+            if(!map.containsKey(tmps))
+                map.put(tmps, new ArrayList<String>());
+            map.get(tmps).add(s);
+        }
+        
+        for(String e:map.keySet()){
+            list.add(map.get(e));
+        }
+        return list;
+    }
+}
     
