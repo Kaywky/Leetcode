@@ -36,7 +36,7 @@ public class Solution {
         for(String s:strs){
             char[] tmp = s.toCharArray();
             Arrays.sort(tmp);
-            String tmps=String.valueOf(tmp); // attention: not "tmp.toString()"
+            String tmps=String.valueOf(tmp); // attention: not "tmp.toString()"; but we can use "Arrays.toString(tmp)"
             if(!map.containsKey(tmps))
                 map.put(tmps, new ArrayList<String>());
             map.get(tmps).add(s);
