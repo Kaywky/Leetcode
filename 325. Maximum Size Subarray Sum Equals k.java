@@ -23,4 +23,4 @@ public class Solution {
         return res;
     }
 }
-//slow
+//to make O(n) time, use HashMap
