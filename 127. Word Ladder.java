@@ -32,4 +32,4 @@ public class Solution {
     
 }
 
-//updating: two-end solution
+//other: two-end solution
