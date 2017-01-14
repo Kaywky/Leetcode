@@ -34,3 +34,27 @@ public class Solution {
     }
     
 }
+
+
+update:
+
+public class Solution {
+    
+    int res;
+    
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length()<=1)
+            return s.length();
+        res=1;
+        int[] ch=new int[128];
+        Arrays.fill(ch, -1);
+        int i=0;
+        for(int j=0; j<s.length(); j++){
+            i=Math.max(i, ch[(int)s.charAt(j)]+1);
+            ch[(int)s.charAt(j)]=j;
+            res=Math.max(res, j-i+1);
+        }
+        
+        return res;
+    }
+}
