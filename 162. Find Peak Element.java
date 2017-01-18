@@ -11,7 +11,7 @@ public class Solution {
                 else{
                     i=mid+1;
                     continue;
-                }
+                } //or: else return mid+1;
             }
             if(mid==nums.length-1){
                 if(nums[mid]>nums[mid-1])
@@ -19,7 +19,7 @@ public class Solution {
                 else{
                     j=mid-1;
                     continue;
-                }
+                } //or: else return mid-1;
             }
             if(nums[mid]>nums[mid-1] && nums[mid]>nums[mid+1])
                 return mid;
